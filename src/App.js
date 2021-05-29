@@ -1,10 +1,21 @@
 import logo from './logo.svg';
 import './App.css';
+import Header from './containers/Header';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import ProductListing from './containers/ProductListing';
+import ProductDetail from './containers/ProductComponent';
 
 function App() {
   return (
     <div>
-      <h1>You are going to be beautiful shoplify!!!</h1>
+      <Router>
+        <Header/>
+        <Switch>
+        <Route path="/" exact component={ProductListing}/>
+        <Route path="/product/:productId" exact component={ProductDetail}/>
+        <Route>404 Not Found!</Route>
+        </Switch>
+      </Router>
     </div>
   );
 }
